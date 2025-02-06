@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const db = config.get('mongoURI');
+// const db = config.get('mongoURI');
+require('dotenv').config();
+
+const uri = process.env.MONGODB_URI;
 
 const connectDB = async () => {
     try {
@@ -8,7 +11,7 @@ const connectDB = async () => {
         mongoose.set('strictQuery', true);
 
         // Conectando ao MongoDB sem opções depreciadas
-        await mongoose.connect(db);
+        await mongoose.connect(uri);
 
         console.log('mongoDB esta conectado...');
     } catch (err) {
