@@ -3,12 +3,13 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import "../App.css";
 import axios from "axios";
 function ShowBookDetails(props) {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [book, setBook] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get(`http://localhost:8082/api/books/${id}`)
+      .get(`${apiUrl}/api/books/${id}`)
       .then((res) => {
         setBook(res.data);
       })
@@ -18,7 +19,7 @@ function ShowBookDetails(props) {
   }, [id]);
   const onDeleteClick = (id) => {
     axios
-      .delete(`http://localhost:8082/api/books/${id}`)
+      .delete(`${apiUrl}/api/books/${id}`)
       .then((res) => {
         navigate("/books");
       })

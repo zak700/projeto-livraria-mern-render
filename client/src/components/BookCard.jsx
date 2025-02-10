@@ -6,8 +6,7 @@ const BookCard = (props) => {
   return (
     <div className="card-container">
       <img
-        src="https://images.unsplash.com/photo-1495446815901-a7297e633
-e8d"
+        src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d"
         alt="Books"
         height={200}
       />

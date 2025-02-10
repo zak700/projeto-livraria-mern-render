@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 const CreateBook = (props) => {
   // Define the state with useState hook
+  const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [book, setBook] = useState({
     title: "",
@@ -19,7 +21,7 @@ const CreateBook = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8082/api/books", book)
+      .post(`${apiUrl}/api/books`, book)
       .then((res) => {
         setBook({
           title: "",
@@ -42,11 +44,7 @@ const CreateBook = (props) => {
         <div className="row">
           <div className="col-md-8 m-auto">
             <br />
-            <Link
-              to="/books"
-              className="btn btn-outline-warning
-float-left"
-            >
+            <Link to="/books" className="btn btn-outline-warningfloat-left">
               Show BooK List
             </Link>
           </div>
